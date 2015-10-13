@@ -1,0 +1,15 @@
+if TARGET_MX6HOMEY
+
+config SYS_BOARD
+	default "mx6homey"
+
+config SYS_VENDOR
+	default "athom"
+
+config SYS_SOC
+	default "mx6"
+
+config SYS_CONFIG_NAME
+	default "mx6homey"
+
+endif

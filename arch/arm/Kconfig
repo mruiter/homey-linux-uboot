@@ -563,6 +563,11 @@ config TARGET_MX6CUBOXI
 	bool "Support Solid-run mx6 boards"
 	select CPU_V7
 	select SUPPORT_SPL
+	
+config TARGET_MX6HOMEY
+	bool "Support Athom Homey board"
+	select CPU_V7
+	select SUPPORT_SPL
 
 config TARGET_MX6SLEVK
 	bool "Support mx6slevk"
@@ -870,6 +875,7 @@ source "arch/arm/cpu/armv8/Kconfig"
 source "arch/arm/imx-common/Kconfig"
 
 source "board/aristainetos/Kconfig"
+source "board/athom/mx6homey/Kconfig"
 source "board/BuR/kwb/Kconfig"
 source "board/BuR/tseries/Kconfig"
 source "board/CarMediaLab/flea3/Kconfig"
