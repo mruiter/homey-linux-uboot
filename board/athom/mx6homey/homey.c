@@ -128,6 +128,7 @@ int board_early_init_f(void)
 {
 	int ret = 0;
 	setup_iomux_uart();
+	SETUP_IOMUX_PADS(uc_bootmode_pads);
 
 #ifdef CONFIG_USB_EHCI_MX6
 	setup_usb();
