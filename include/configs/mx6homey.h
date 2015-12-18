@@ -129,8 +129,15 @@
         "mw.b 20D8047 0x10; " \
         "mw.l ${ramdisk_force_addr} 1 1; " \
         "mmc write ${fdt_addr_r} 0 0xA800; " \
-        "echo Restarting...; " \
-        "reset;" \
+        "echo erasing possible update...; " \
+        "mmc erase 543000 400; " \
+        "echo possible POR incoming...; " \
+        "gpio clear 52; " \
+        "sleep 1; " \
+        "gpio input 52; " \
+        "sleep 2; " \
+        "echo resetting usom...; " \
+        "reset; " \
     "else echo Unable to boot.; fi; " \
     "fi; "
 
