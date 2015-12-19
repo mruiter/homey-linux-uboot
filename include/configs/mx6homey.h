@@ -8,7 +8,7 @@
 #ifndef __MX6HOMEY_CONFIG_H
 #define __MX6HOMEY_CONFIG_H
 
-#define CONFIG_BOOTDELAY	1
+#define CONFIG_BOOTDELAY	0
 
 #include "mx6_common.h"
 
@@ -54,8 +54,8 @@
 #define CONFIG_USB_KEYBOARD
 #define CONFIG_SYS_USB_EVENT_POLL
 #define CONFIG_PREBOOT \
-    "setenv stdin  serial; " \
-    "setenv stdout serial; " \
+    "setenv stdin  none; " \
+    "setenv stdout none; " \
     "setenv stderr serial; "
 
 /* Command definition */
@@ -88,9 +88,9 @@
         "if run loadfdt; then " \
     	    "if test $bootmode = ramdisk && run loadramdisk; then " \
     	        "echo Loaded ramdisk.; " \
-                "setenv bootargs rdinit=/sbin/init rootwait console=${console},${baudrate}; " \
+                "setenv bootargs rdinit=/sbin/init rootwait console=tty0; " \
             "else " \
-                "setenv bootargs console=${console},${baudrate} root=${mmcroot} rootfstype=ext4 " \
+                "setenv bootargs console=tty0 root=${mmcroot} rootfstype=ext4 " \
                         "rd.dm=0 rd.luks=0 rd.lvm=0 raid=noautodetect; " \
     		    "setenv ramdisk_addr_r -; " \
                 /*"if spl export fdt ${loadaddr} - ${fdt_addr_r}; then " */\
