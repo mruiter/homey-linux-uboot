@@ -132,7 +132,7 @@
         "mw.l ${ramdisk_force_addr} 1 1; " \
         "mmc write ${fdt_addr_r} 0 0xA800; " \
         "echo erasing possible update...; " \
-        "mmc erase 543000 200000; " \
+        "mmc erase 543000 4000; " \
         "echo possible POR incoming...; " \
         "gpio clear 52; " \
         "sleep 1; " \
