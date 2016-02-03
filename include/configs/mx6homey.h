@@ -56,8 +56,8 @@
 #define CONFIG_SYS_DEVICE_NULLDEV
 #define CONFIG_SILENT_CONSOLE
 #define CONFIG_PREBOOT \
-    "setenv stdin  nulldev; " \
-    "setenv stdout nulldev; " \
+    "setenv stdin ${consoledev}; " \
+    "setenv stdout ${consoledev}; " \
     "setenv stderr serial; "
 
 /* Command definition */
@@ -77,7 +77,6 @@
 	"fdt_addr_r=0x18000000\0" \
 	"ramdisk_force_addr=0x18000010\0" \
 	"ramdisk_force_ref_addr=0x18000020\0" \
-	"console=" CONFIG_CONSOLE_DEV "\0" \
 	"baudrate=115200n8\0" \
 	"bootm_size=0x10000000\0" \
 	"mmcdev=" __stringify(CONFIG_SYS_MMC_ENV_DEV) "\0" \
@@ -90,9 +89,9 @@
         "if run loadfdt; then " \
     	    "if test $bootmode = ramdisk && run loadramdisk; then " \
     	        "echo Loaded ramdisk.; " \
-                "setenv bootargs rdinit=/sbin/init rootwait console=tty0; " \
+                "setenv bootargs rdinit=/sbin/init rootwait console=${consoletty}; " \
             "else " \
-                "setenv bootargs console=tty0 root=${mmcroot} rootfstype=ext4 " \
+                "setenv bootargs console=${consoletty} root=${mmcroot} rootfstype=ext4 " \
                         "rd.dm=0 rd.luks=0 rd.lvm=0 raid=noautodetect; " \
     		    "setenv ramdisk_addr_r -; " \
                 /*"if spl export fdt ${loadaddr} - ${fdt_addr_r}; then " */\

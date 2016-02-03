@@ -207,6 +207,14 @@ int board_late_init(void)
     setenv("bootmode", bmode);
     printf("Bootmode is: %s\n", bmode);
 
+    if(readl(0x21BC6E0) & 1) {
+        setenv("consoledev", "serial");
+        setenv("consoletty", "ttymxc0,115200n8");
+    } else {
+        setenv("consoledev", "nulldev");
+        setenv("consoletty", "tty0");
+    }
+
     int cpurev = get_cpu_rev();
     setenv("cpu",get_imx_type((cpurev & 0xFF000) >> 12));
 #endif
