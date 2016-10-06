@@ -129,10 +129,9 @@
         "mw.l 20D8040 0x3060; " \
         "mw.b 20D8047 0x10; " \
         "mw.l ${ramdisk_force_addr} 1 1; " \
+        "echo removing version number; " \
         "mw.l ${ramdisk_force_ref_addr} 0 8; " \
         "mmc write ${fdt_addr_r} 0 0xA800; " \
-        "echo erasing possible update...; " \
-        "mmc erase 543000 4000; " \
         "echo possible POR incoming...; " \
         "gpio clear 52; " \
         "sleep 1; " \
